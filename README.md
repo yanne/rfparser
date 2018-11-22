@@ -14,3 +14,9 @@ acheve the goal.
 Implemented using [Sly](https://github.com/dabeaz/sly)
 To run the sly parser from the command line:
   `python sly/test.py testdata/test.robot`
+
+### lark/rfparser.py
+
+Implemented using [Lark](https://github.com/lark-parser/lark)
+To run the lark parser from the command line:
+  `python lark/test.py testdata/test.robot`
