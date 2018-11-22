@@ -9,6 +9,12 @@ acheve the goal.
 
 ## Parsers
 
+### ply/rfparser.py
+
+Implemented using [Ply](https://github.com/dabeaz/ply)
+To run the ply parser from the command line:
+  `python ply/test.py testdata/test.robot`
+
 ### sly/rfparser.py
 
 Implemented using [Sly](https://github.com/dabeaz/sly)

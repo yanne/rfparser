@@ -1,0 +1,319 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    CONTINUATION
+    SEPARATOR
+
+Grammar
+
+Rule 0     S' -> testcases
+Rule 1     testcases -> testcase
+Rule 2     testcases -> testcases testcase
+Rule 3     testcase -> NAME settings steps
+Rule 4     testcase -> NAME steps
+Rule 5     settings -> setting
+Rule 6     settings -> settings setting
+Rule 7     setting -> SETTING setting_values
+Rule 8     setting_values -> SETTING_VALUE
+Rule 9     setting_values -> setting_values SETTING_VALUE
+Rule 10    steps -> step
+Rule 11    steps -> steps step
+Rule 12    step -> KEYWORD
+Rule 13    step -> KEYWORD arguments
+Rule 14    step -> ASSIGNMENT KEYWORD arguments
+Rule 15    arguments -> ARGUMENT
+Rule 16    arguments -> arguments ARGUMENT
+
+Terminals, with rules where they appear
+
+ARGUMENT             : 15 16
+ASSIGNMENT           : 14
+CONTINUATION         : 
+KEYWORD              : 12 13 14
+NAME                 : 3 4
+SEPARATOR            : 
+SETTING              : 7
+SETTING_VALUE        : 8 9
+error                : 
+
+Nonterminals, with rules where they appear
+
+arguments            : 13 14 16
+setting              : 5 6
+setting_values       : 7 9
+settings             : 3 6
+step                 : 10 11
+steps                : 3 4 11
+testcase             : 1 2
+testcases            : 2 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . testcases
+    (1) testcases -> . testcase
+    (2) testcases -> . testcases testcase
+    (3) testcase -> . NAME settings steps
+    (4) testcase -> . NAME steps
+
+    NAME            shift and go to state 3
+
+    testcases                      shift and go to state 1
+    testcase                       shift and go to state 2
+
+state 1
+
+    (0) S' -> testcases .
+    (2) testcases -> testcases . testcase
+    (3) testcase -> . NAME settings steps
+    (4) testcase -> . NAME steps
+
+    NAME            shift and go to state 3
+
+    testcase                       shift and go to state 4
+
+state 2
+
+    (1) testcases -> testcase .
+
+    NAME            reduce using rule 1 (testcases -> testcase .)
+    $end            reduce using rule 1 (testcases -> testcase .)
+
+
+state 3
+
+    (3) testcase -> NAME . settings steps
+    (4) testcase -> NAME . steps
+    (5) settings -> . setting
+    (6) settings -> . settings setting
+    (10) steps -> . step
+    (11) steps -> . steps step
+    (7) setting -> . SETTING setting_values
+    (12) step -> . KEYWORD
+    (13) step -> . KEYWORD arguments
+    (14) step -> . ASSIGNMENT KEYWORD arguments
+
+    SETTING         shift and go to state 9
+    KEYWORD         shift and go to state 10
+    ASSIGNMENT      shift and go to state 11
+
+    settings                       shift and go to state 5
+    steps                          shift and go to state 6
+    setting                        shift and go to state 7
+    step                           shift and go to state 8
+
+state 4
+
+    (2) testcases -> testcases testcase .
+
+    NAME            reduce using rule 2 (testcases -> testcases testcase .)
+    $end            reduce using rule 2 (testcases -> testcases testcase .)
+
+
+state 5
+
+    (3) testcase -> NAME settings . steps
+    (6) settings -> settings . setting
+    (10) steps -> . step
+    (11) steps -> . steps step
+    (7) setting -> . SETTING setting_values
+    (12) step -> . KEYWORD
+    (13) step -> . KEYWORD arguments
+    (14) step -> . ASSIGNMENT KEYWORD arguments
+
+    SETTING         shift and go to state 9
+    KEYWORD         shift and go to state 10
+    ASSIGNMENT      shift and go to state 11
+
+    steps                          shift and go to state 12
+    setting                        shift and go to state 13
+    step                           shift and go to state 8
+
+state 6
+
+    (4) testcase -> NAME steps .
+    (11) steps -> steps . step
+    (12) step -> . KEYWORD
+    (13) step -> . KEYWORD arguments
+    (14) step -> . ASSIGNMENT KEYWORD arguments
+
+    NAME            reduce using rule 4 (testcase -> NAME steps .)
+    $end            reduce using rule 4 (testcase -> NAME steps .)
+    KEYWORD         shift and go to state 10
+    ASSIGNMENT      shift and go to state 11
+
+    step                           shift and go to state 14
+
+state 7
+
+    (5) settings -> setting .
+
+    SETTING         reduce using rule 5 (settings -> setting .)
+    KEYWORD         reduce using rule 5 (settings -> setting .)
+    ASSIGNMENT      reduce using rule 5 (settings -> setting .)
+
+
+state 8
+
+    (10) steps -> step .
+
+    KEYWORD         reduce using rule 10 (steps -> step .)
+    ASSIGNMENT      reduce using rule 10 (steps -> step .)
+    NAME            reduce using rule 10 (steps -> step .)
+    $end            reduce using rule 10 (steps -> step .)
+
+
+state 9
+
+    (7) setting -> SETTING . setting_values
+    (8) setting_values -> . SETTING_VALUE
+    (9) setting_values -> . setting_values SETTING_VALUE
+
+    SETTING_VALUE   shift and go to state 16
+
+    setting_values                 shift and go to state 15
+
+state 10
+
+    (12) step -> KEYWORD .
+    (13) step -> KEYWORD . arguments
+    (15) arguments -> . ARGUMENT
+    (16) arguments -> . arguments ARGUMENT
+
+    KEYWORD         reduce using rule 12 (step -> KEYWORD .)
+    ASSIGNMENT      reduce using rule 12 (step -> KEYWORD .)
+    NAME            reduce using rule 12 (step -> KEYWORD .)
+    $end            reduce using rule 12 (step -> KEYWORD .)
+    ARGUMENT        shift and go to state 18
+
+    arguments                      shift and go to state 17
+
+state 11
+
+    (14) step -> ASSIGNMENT . KEYWORD arguments
+
+    KEYWORD         shift and go to state 19
+
+
+state 12
+
+    (3) testcase -> NAME settings steps .
+    (11) steps -> steps . step
+    (12) step -> . KEYWORD
+    (13) step -> . KEYWORD arguments
+    (14) step -> . ASSIGNMENT KEYWORD arguments
+
+    NAME            reduce using rule 3 (testcase -> NAME settings steps .)
+    $end            reduce using rule 3 (testcase -> NAME settings steps .)
+    KEYWORD         shift and go to state 10
+    ASSIGNMENT      shift and go to state 11
+
+    step                           shift and go to state 14
+
+state 13
+
+    (6) settings -> settings setting .
+
+    SETTING         reduce using rule 6 (settings -> settings setting .)
+    KEYWORD         reduce using rule 6 (settings -> settings setting .)
+    ASSIGNMENT      reduce using rule 6 (settings -> settings setting .)
+
+
+state 14
+
+    (11) steps -> steps step .
+
+    KEYWORD         reduce using rule 11 (steps -> steps step .)
+    ASSIGNMENT      reduce using rule 11 (steps -> steps step .)
+    NAME            reduce using rule 11 (steps -> steps step .)
+    $end            reduce using rule 11 (steps -> steps step .)
+
+
+state 15
+
+    (7) setting -> SETTING setting_values .
+    (9) setting_values -> setting_values . SETTING_VALUE
+
+    SETTING         reduce using rule 7 (setting -> SETTING setting_values .)
+    KEYWORD         reduce using rule 7 (setting -> SETTING setting_values .)
+    ASSIGNMENT      reduce using rule 7 (setting -> SETTING setting_values .)
+    SETTING_VALUE   shift and go to state 20
+
+
+state 16
+
+    (8) setting_values -> SETTING_VALUE .
+
+    SETTING_VALUE   reduce using rule 8 (setting_values -> SETTING_VALUE .)
+    SETTING         reduce using rule 8 (setting_values -> SETTING_VALUE .)
+    KEYWORD         reduce using rule 8 (setting_values -> SETTING_VALUE .)
+    ASSIGNMENT      reduce using rule 8 (setting_values -> SETTING_VALUE .)
+
+
+state 17
+
+    (13) step -> KEYWORD arguments .
+    (16) arguments -> arguments . ARGUMENT
+
+    KEYWORD         reduce using rule 13 (step -> KEYWORD arguments .)
+    ASSIGNMENT      reduce using rule 13 (step -> KEYWORD arguments .)
+    NAME            reduce using rule 13 (step -> KEYWORD arguments .)
+    $end            reduce using rule 13 (step -> KEYWORD arguments .)
+    ARGUMENT        shift and go to state 21
+
+
+state 18
+
+    (15) arguments -> ARGUMENT .
+
+    ARGUMENT        reduce using rule 15 (arguments -> ARGUMENT .)
+    KEYWORD         reduce using rule 15 (arguments -> ARGUMENT .)
+    ASSIGNMENT      reduce using rule 15 (arguments -> ARGUMENT .)
+    NAME            reduce using rule 15 (arguments -> ARGUMENT .)
+    $end            reduce using rule 15 (arguments -> ARGUMENT .)
+
+
+state 19
+
+    (14) step -> ASSIGNMENT KEYWORD . arguments
+    (15) arguments -> . ARGUMENT
+    (16) arguments -> . arguments ARGUMENT
+
+    ARGUMENT        shift and go to state 18
+
+    arguments                      shift and go to state 22
+
+state 20
+
+    (9) setting_values -> setting_values SETTING_VALUE .
+
+    SETTING_VALUE   reduce using rule 9 (setting_values -> setting_values SETTING_VALUE .)
+    SETTING         reduce using rule 9 (setting_values -> setting_values SETTING_VALUE .)
+    KEYWORD         reduce using rule 9 (setting_values -> setting_values SETTING_VALUE .)
+    ASSIGNMENT      reduce using rule 9 (setting_values -> setting_values SETTING_VALUE .)
+
+
+state 21
+
+    (16) arguments -> arguments ARGUMENT .
+
+    ARGUMENT        reduce using rule 16 (arguments -> arguments ARGUMENT .)
+    KEYWORD         reduce using rule 16 (arguments -> arguments ARGUMENT .)
+    ASSIGNMENT      reduce using rule 16 (arguments -> arguments ARGUMENT .)
+    NAME            reduce using rule 16 (arguments -> arguments ARGUMENT .)
+    $end            reduce using rule 16 (arguments -> arguments ARGUMENT .)
+
+
+state 22
+
+    (14) step -> ASSIGNMENT KEYWORD arguments .
+    (16) arguments -> arguments . ARGUMENT
+
+    KEYWORD         reduce using rule 14 (step -> ASSIGNMENT KEYWORD arguments .)
+    ASSIGNMENT      reduce using rule 14 (step -> ASSIGNMENT KEYWORD arguments .)
+    NAME            reduce using rule 14 (step -> ASSIGNMENT KEYWORD arguments .)
+    $end            reduce using rule 14 (step -> ASSIGNMENT KEYWORD arguments .)
+    ARGUMENT        shift and go to state 21
+
